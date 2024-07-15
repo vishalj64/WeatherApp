@@ -21,6 +21,11 @@ function displayResults(weatherData) {
    let temp = document.querySelector(".temp")
    temp.innerText = `${Math.round(weatherData.main.temp)}°c`
 
+    
+  let now = new Date();
+  let date = document.querySelector('.date');
+  date.innerText = dateBuilder(now);
+
    let weather = document.querySelector(".weather")
    weather.innerText = weatherData.weather[0].main
 
@@ -28,4 +33,16 @@ function displayResults(weatherData) {
    hiLow.innerText = `${Math.round(weatherData.main.temp_min)}°c / ${Math.round(weatherData.main.temp_max)}°c`
 
 
+}
+
+function dateBuilder (d) {
+  let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+  let day = days[d.getDay()];
+  let date = d.getDate();
+  let month = months[d.getMonth()];
+  let year = d.getFullYear();
+
+  return `${day} ${date} ${month} ${year}`;
 }
